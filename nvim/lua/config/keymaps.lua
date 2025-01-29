@@ -48,19 +48,17 @@ keymap.set("v", ">", ">gv")
 keymap.set("n", "J", "mzJ`z", opts)
 keymap.set("n", "n", "nzzzv", opts)
 keymap.set("n", "N", "Nzzzv", opts)
-keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-  vim.tbl_extend("force", opts, { desc = "Refac name" }))
+keymap.set(
+  "n",
+  "<leader>s",
+  [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+  vim.tbl_extend("force", opts, { desc = "Refac name" })
+)
 
 -- Diagnostics
 keymap.set("n", "<C-j>", function()
   vim.diagnostic.goto_next()
 end, opts)
-
--- Toggle gitsigns current line blame
-keymap.set("n", "<leader>gl", function()
-  vim.cmd("Gitsigns toggle_current_line_blame")
-end, vim.tbl_extend("force", opts, { desc = "Toggle gitsigns" }))
-
 
 -- LSP Keymaps
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, vim.tbl_extend("force", opts, { desc = "Go to Definition" }))
@@ -80,6 +78,10 @@ end, vim.tbl_extend("force", opts, { desc = "Format Document" }))
 -- Telescope Keymaps
 vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>", vim.tbl_extend("force", opts, { desc = "Find Files" }))
 vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>", vim.tbl_extend("force", opts, { desc = "Live Grep" }))
-vim.keymap.set("n", "<leader>fh", ":Telescope help_tags<CR>", vim.tbl_extend("force", opts, { desc = "Find Help Tags" }))
+vim.keymap.set(
+  "n",
+  "<leader>fh",
+  ":Telescope help_tags<CR>",
+  vim.tbl_extend("force", opts, { desc = "Find Help Tags" })
+)
 vim.keymap.set("n", "<leader>fr", ":Telescope oldfiles<CR>", vim.tbl_extend("force", opts, { desc = "Recent Files" }))
-vim.keymap.set("n", "<leader>fc", ":Telescope commands<CR>", vim.tbl_extend("force", opts, { desc = "Find Commands" }))
